@@ -2,7 +2,7 @@ import vk_api
 from random import choice
 from time import sleep
 token = 'token'
-statuses = ['Абоба', 'Бебра', 'Рандомный статус', 'пиписька']
+statuses = ['Статус', 'Автостатус', 'Рандомный статус', 'Мяу']
 
 api = vk_api.VkApi(token=token).get_api()
 while True:
