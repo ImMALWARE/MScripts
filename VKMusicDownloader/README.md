@@ -6,7 +6,7 @@
 **vk_katemobile_token** - токен от ВК от приложения Kate Mobile. Получать тут: https://oauth.vk.com/oauth/authorize?client_id=2685278&scope=1073737727&redirect_uri=https://oauth.vk.com/blank.html&display=page&response_type=token&revoke=1&slogin_h=76221ebe206a61f572.1311d3f9b4f42b1afc&__q_hash=aec2ca6a35a6e62c117fdb16395d7df0
 (нужно скопировать строку от access_token= до &expires_in)
 
-**genius_token** - токен от сайта Genius, получать тут [URL]https://genius.com/api-clients[/URL] (сначала надо создать аккаунт)
+**genius_token** - токен от сайта Genius, получать тут https://genius.com/api-clients (сначала надо создать аккаунт)
 
 **owner_id** - с чьего аккаунта скачивать музыку (по ID профиля)
 
