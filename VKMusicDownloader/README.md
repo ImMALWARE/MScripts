@@ -11,4 +11,4 @@
 **owner_id** - с чьего аккаунта скачивать музыку (по ID профиля)
 
 Если скрипт не сможет найти обложку или текст песни, потребуется вставить их в теги mp3 самому. Это можно сделать через AIMP Tag Editor или Mp3tag (https://www.mp3tag.de/en/download.html)
-![image](https://github.com/ImMALWARE/VKMusicDownloader/assets/53017160/fbb258f4-4513-42b6-8c41-25c653a6bb7b)
+![image](https://nztcdn.com/files/b616c7b49a35a479d92221b79fa9b6855953e0e12f84e0c5521204835fd2d79e.webp)
