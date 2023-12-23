@@ -12,10 +12,10 @@ last_online = False
 
 while True:
     online_info = get(f'https://api.vk.com/method/users.get?fields=online,last_seen&v=5.131&user_ids={user_id}&access_token={token}').json()['response'][0]
-    if online_info['online'] == 1 and not last_online:
+    if online_info['online'] and not last_online:
         get(f'https://api.vk.com/method/messages.send?peer_id={owner_id}&message=[id{user_id}|{online_info["first_name"]} {online_info["last_name"]}] в сети!&random_id=0&v=5.131&access_token={group_token}')
         last_online = True
-    elif online_info['online'] == 0:
+    else:
         if last_online:
             get(f'https://api.vk.com/method/messages.send?peer_id={owner_id}&message=[id{user_id}|{online_info["first_name"]} {online_info["last_name"]}] больше не в сети.&random_id=0&v=5.131&access_token={group_token}')
             last_online = False
