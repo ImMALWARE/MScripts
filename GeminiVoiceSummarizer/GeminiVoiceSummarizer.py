@@ -40,18 +40,18 @@ async def handle_message(message: types.Message):
     async with lock:
         if not (await bot.get_business_connection(message.business_connection_id)).user.id in allowed_users: return
         logger.info(f"Received voice message from {message.from_user.id}")
-        recognition_message = await bot.send_message(message.chat.id, '<tg-emoji emoji-id="5296262629558340179"></tg-emoji>Gemini распознаёт голосовое сообщение<tg-emoji emoji-id="5220046725493828505"></tg-emoji>' if message.voice else '<tg-emoji emoji-id="5296262629558340179"></tg-emoji>Gemini распознаёт видеосообщение<tg-emoji emoji-id="5220070652756635426"></tg-emoji>', business_connection_id=message.business_connection_id, reply_to_message_id=message.message_id, parse_mode='HTML')
+        recognition_message = await bot.send_message(message.chat.id, '<tg-emoji emoji-id="5296262629558340179">🖥</tg-emoji>Gemini распознаёт голосовое сообщение<tg-emoji emoji-id="5220046725493828505">✍️</tg-emoji>' if message.voice else '<tg-emoji emoji-id="5296262629558340179">🖥</tg-emoji>Gemini распознаёт видеосообщение<tg-emoji emoji-id="5220070652756635426">👀</tg-emoji>', business_connection_id=message.business_connection_id, reply_to_message_id=message.message_id, parse_mode='HTML')
         await bot.send_chat_action(message.chat.id, 'upload_voice' if message.voice else 'upload_video_note', business_connection_id=message.business_connection_id)
         while True:
             try:
                 tts_result = await telegram_voice_gemini_tts(message.voice.file_id if message.voice else message.video_note.file_id, 'ogg' if message.voice else 'mp4', message.message_id)
-                return await bot.edit_message_text(chat_id=recognition_message.chat.id, message_id=recognition_message.message_id, text='<tg-emoji emoji-id="5296262629558340179"></tg-emoji><b>Gemini</b>: ' + tts_result, business_connection_id=message.business_connection_id, parse_mode='HTML')
+                return await bot.edit_message_text(chat_id=recognition_message.chat.id, message_id=recognition_message.message_id, text='<tg-emoji emoji-id="5296262629558340179">🖥</tg-emoji><b>Gemini</b>: ' + tts_result, business_connection_id=message.business_connection_id, parse_mode='HTML')
             except ValueError:
-                return await bot.edit_message_text(chat_id=recognition_message.chat.id, message_id=recognition_message.message_id, text='<tg-emoji emoji-id="5807626765874499116"></tg-emoji><tg-emoji emoji-id="5296262629558340179"></tg-emoji>Gemini посчитал этот запрос небезопасным.', business_connection_id=message.business_connection_id, parse_mode='HTML')
+                return await bot.edit_message_text(chat_id=recognition_message.chat.id, message_id=recognition_message.message_id, text='<tg-emoji emoji-id="5807626765874499116">🚫</tg-emoji><tg-emoji emoji-id="5296262629558340179">🖥</tg-emoji>Gemini посчитал этот запрос небезопасным.', business_connection_id=message.business_connection_id, parse_mode='HTML')
             except (InternalServerError, SSLError):
                 sleep(3)
             except ResourceExhausted:
-                return await bot.edit_message_text(chat_id=recognition_message.chat.id, message_id=recognition_message.message_id, text='<tg-emoji emoji-id="5456670136121434320"></tg-emoji><tg-emoji emoji-id="5296262629558340179"></tg-emoji>Достигнут лимит запросов к Gemini :(', business_connection_id=message.business_connection_id, parse_mode='HTML')
+                return await bot.edit_message_text(chat_id=recognition_message.chat.id, message_id=recognition_message.message_id, text='<tg-emoji emoji-id="5456670136121434320">😔</tg-emoji><tg-emoji emoji-id="5296262629558340179">🖥</tg-emoji>Достигнут лимит запросов к Gemini :(', business_connection_id=message.business_connection_id, parse_mode='HTML')
             except Exception as e:
                 logger.error(e)
                 await bot.send_message(allowed_users[0], str(e))
@@ -80,11 +80,11 @@ async def handle_message(message: types.Message):
                 tts_result = await telegram_voice_gemini_tts(message.voice.file_id if message.voice else message.video_note.file_id, 'ogg' if message.voice else 'mp4', message.message_id)
                 return await bot.edit_message_text(chat_id=recognition_message.chat.id, message_id=recognition_message.message_id, text='<b>Gemini</b>: ' + tts_result, parse_mode='HTML')
             except ValueError:
-                return await bot.edit_message_text(chat_id=recognition_message.chat.id, message_id=recognition_message.message_id, text='Gemini посчитал этот запрос небезопасным.', parse_mode='HTML')
+                return await bot.edit_message_text(chat_id=recognition_message.chat.id, message_id=recognition_message.message_id, text='🚫Gemini посчитал этот запрос небезопасным.', parse_mode='HTML')
             except (InternalServerError, SSLError):
                 sleep(3)
             except ResourceExhausted:
-                return await bot.edit_message_text(chat_id=recognition_message.chat.id, message_id=recognition_message.message_id, text='Достигнут лимит запросов к Gemini :(')
+                return await bot.edit_message_text(chat_id=recognition_message.chat.id, message_id=recognition_message.message_id, text='😔Достигнут лимит запросов к Gemini :(')
             except Exception as e:
                 logger.error(e)
                 await bot.send_message(allowed_users[0], str(e))
@@ -99,4 +99,4 @@ async def main():
     await dp.start_polling(bot)
 
 
-asyncio.run(main())
+asyncio.run(main()) 
