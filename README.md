@@ -8,6 +8,8 @@
 
 [AiogramBotTemplate.py](https://github.com/ImMALWARE/MScripts/blob/main/AiogramBotTemplate.py) — Шаблон бота ТГ на Aiogram
 
+[GeminiVoiceSummarizer.py](https://github.com/ImMALWARE/MScripts/tree/main/GeminiVoiceSummarizer) — Gemini пересказывает все голосовые сообщения, которые вам приходят в Telegram
+
 [VKOnline.py](https://github.com/ImMALWARE/MScripts/blob/main/VKOnline.py) — Простейший вечный онлайн ВКонтакте
 
 [VKMusicDownloader](https://github.com/ImMALWARE/MScripts/tree/main/VKMusicDownloader) — Скачивание всей музыки ВК + с обложкой + с текстом MusixMatch или Genius
