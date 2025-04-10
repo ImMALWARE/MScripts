@@ -1,19 +1,30 @@
-from aiogram import Bot, Dispatcher, executor, types
+import logging
+from asyncio import run
 
-bot = Bot(token='token')
-dp = Dispatcher(bot)
+from aiogram import Bot, Dispatcher
+from aiogram.filters import CommandStart, Command
+from aiogram.types import Message
+from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
 
-@dp.message_handler(regexp='(!проверка)')
-async def handler_proverka(message: types.Message):
-    await message.reply('Проверка успешна!')
+bot = Bot("TOKEN", default = DefaultBotProperties(parse_mode = ParseMode.HTML))
+dp = Dispatcher()
 
-@dp.message_handler(regexp='(!напиши )')
-async def handler_napishi(message: types.Message):
-    await message.reply(message.text.replace('!напиши ', ''))
+@dp.message(CommandStart())
+async def cmd_start(message: Message):
+    await message.answer("Привет!")
 
-@dp.message_handler(regexp='(!параметрысбщ)')
-async def handler_parametri(message: types.Message):    
-    await message.reply('У сообщения такие параметры:\n'+'\n'.join([str(value)+': '+str(message[value]) for value in dict(message)]))
+@dp.message(Command("help"))
+async def cmd_help(message: Message):
+    await message.answer("Помощь")
 
-print('Бот запущен')
-executor.start_polling(dp, skip_updates=True)
+@dp.message()
+async def echo(message: Message):
+    await message.answer(message.text)
+
+async def main() -> None:
+    await bot.delete_webhook(True)
+    await dp.start_polling(bot)
+
+logging.basicConfig(level=logging.INFO)
+run(main())
