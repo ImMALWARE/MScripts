@@ -7,7 +7,7 @@ from subprocess import call
 if name != 'nt': exit('Скрипт работает неправильно на Linux! Пожалуйста, используйте Windows!')
 system('title VKMusic Downloader')
 system('cls')
-print('Внимание! ВК не позволяет загружать некоторые треки с нероссийским айпи! В то же время, MusixMatch заблокирован в России. Решение - использовать WireGuard + WARP. https://t.me/immalware/464. Перед продолжением убедитесь, что вы используете WARP или любой другой VPN с российским айпи!')
+print('Внимание! ВК не позволяет загружать некоторые треки с нероссийским айпи! В то же время, MusixMatch заблокирован РКНом. Используйте zapret или WARP.')
 system('pause')
 
 
