@@ -39,3 +39,5 @@
 [TGChannelEventsNotifier](https://github.com/ImMALWARE/MScripts/tree/main/TGChannelEventsNotifier) — Уведомления о событиях в канале ТГ (например, новые подписчики).
 
 [DonationAlertsNotifier](https://github.com/ImMALWARE/MScripts/tree/main/DonationAlertsNotifier) — Уведомления о донатах DonationAlerts в ТГ
+
+[SpotifyFindUnavailable](https://github.com/ImMALWARE/MScripts/blob/main/SpotifyFindUnavailable.py) — Поиск недоступных треков в плейлисте Spotify
